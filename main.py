@@ -67,8 +67,8 @@ def make_post(NewsFeed, cur_blog):
         #print(each)
 
     # Create the actual post.
-    #post.post_status = 'publish'
-    print(post.content)
+    post.post_status = 'publish'
+    #print(post.content)
     # For Troubleshooting and reworking, uncomment the above then comment out the below, this will print results instead of posting
     post.id = wp.call(NewPost(post))
 
