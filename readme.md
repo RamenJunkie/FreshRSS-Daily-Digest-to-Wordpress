@@ -2,6 +2,9 @@
 
 This script will take the RSS output feed URL from Fresh RSS and produce a post on a Wordpress blog on whatever Schedule is set by Cron.  It can handle multiple endpoint blogs and provides some CSS elements that can be used to format the links.
 
+A sample of what the final output looks like can be found here:  
+[Blogging Intensifies Link List](https://bloggingintensifies.com/category/feeds/link-list/)
+
 ## How to Use this Script
 
 * The Script is designed to be run on a regular schedule using cron or whatever time based script system you would like to use.
