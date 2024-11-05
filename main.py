@@ -38,7 +38,7 @@ def strip_tags(html):
 
 # Get News Feed
 def get_feed(feed_url):
-    print(feed_url+str(hours_diff))
+    #print(feed_url+str(hours_diff))
     NewsFeed = feedparser.parse(feed_url+str(hours_diff))
     return NewsFeed
 
@@ -82,7 +82,7 @@ def make_post(NewsFeed, cur_blog):
     # For Troubleshooting and reworking, uncomment the above then comment out the below, this will print results instead of posting
     post.id = wp.call(NewPost(post))
 
-    with open(f"{cur_date}.md",a) as filewrite:
+    with open(f"{cur_date}.md", 'a') as filewrite:
         filewrite.write(post.content)
 
     try:

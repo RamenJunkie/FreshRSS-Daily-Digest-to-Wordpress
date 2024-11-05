@@ -1,2 +1,4 @@
 /auth.py
 /venv/
+__pycache__
+lastrun.md
