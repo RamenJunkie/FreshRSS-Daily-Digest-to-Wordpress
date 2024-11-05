@@ -84,7 +84,7 @@ def make_post(NewsFeed, cur_blog):
 
     with open(f"{cur_date}.md", 'a') as filewrite:
         filewrite.write(post.content)
-	filewrite.write("\n\n\n ************ \n\n\n")
+        filewrite.write("\n\n\n ---------------- \n\n\n")
 
     try:
         if post.id:
