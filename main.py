@@ -9,6 +9,15 @@ from html.parser import HTMLParser
 
 cur_date = datetime.datetime.now().strftime(('%A %Y-%m-%d'))
 
+with open('lastrun.md', 'r') as file:
+    last_time = datetime.datetime.strptime(file.read(), "%d-%b-%Y (%H:%M:%S.%f)")
+
+current_time = datetime.datetime.now()
+hours_diff = int((current_time - last_time).total_seconds() / 3600.0)
+
+if hours_diff < 1:
+    hours_diff = 1
+
 ### HTML Stripper from https://stackoverflow.com/questions/753052/strip-html-from-strings-in-python
 class MLStripper(HTMLParser):
     def __init__(self):
@@ -29,7 +38,8 @@ def strip_tags(html):
 
 # Get News Feed
 def get_feed(feed_url):
-    NewsFeed = feedparser.parse(feed_url)
+    print(feed_url+str(hours_diff))
+    NewsFeed = feedparser.parse(feed_url+str(hours_diff))
     return NewsFeed
 
 # Create the post text
@@ -67,10 +77,13 @@ def make_post(NewsFeed, cur_blog):
         #print(each)
 
     # Create the actual post.
-    post.post_status = 'publish'
+    #post.post_status = 'publish'
     #print(post.content)
     # For Troubleshooting and reworking, uncomment the above then comment out the below, this will print results instead of posting
     post.id = wp.call(NewPost(post))
+
+    with open(f"{cur_date}.md",a) as filewrite:
+        filewrite.write(post.content)
 
     try:
         if post.id:
@@ -88,3 +101,5 @@ for each in blogs:
         make_post(newsfeed, each)
         #print(NewsFeed.entries)
 
+with open('lastrun.md', 'w') as file:
+    file.write(current_time.strftime("%d-%b-%Y (%H:%M:%S.%f)"))
