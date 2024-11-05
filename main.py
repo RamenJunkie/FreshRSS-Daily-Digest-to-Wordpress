@@ -77,13 +77,14 @@ def make_post(NewsFeed, cur_blog):
         #print(each)
 
     # Create the actual post.
-    #post.post_status = 'publish'
+    post.post_status = 'publish'
     #print(post.content)
     # For Troubleshooting and reworking, uncomment the above then comment out the below, this will print results instead of posting
     post.id = wp.call(NewPost(post))
 
     with open(f"{cur_date}.md", 'a') as filewrite:
         filewrite.write(post.content)
+	filewrite.write("\n\n\n ************ \n\n\n")
 
     try:
         if post.id:
