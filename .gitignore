@@ -3,3 +3,5 @@
 __pycache__/
 lastrun.md
 /archive/
+.idea
+.gitignore
