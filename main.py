@@ -8,7 +8,7 @@ from io import StringIO
 from html.parser import HTMLParser
 
 # Toggle True/false to enable posting to blogs for testing.  Will Still Output to files
-runmode = True
+runmode = False
 
 cur_date = datetime.datetime.now().strftime(('%A %Y-%m-%d'))
 current_time = datetime.datetime.now()
